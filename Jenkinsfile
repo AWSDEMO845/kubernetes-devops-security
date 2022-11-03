@@ -8,7 +8,7 @@ pipeline {
               archive 'target/*.jar' 
             }
         }  
-        stage('Unit Tests') {
+      stage('Unit Tests') {
             steps {
               sh "mvn test"
             }
@@ -17,7 +17,16 @@ pipeline {
                 junit 'target/surefire-reports/*.xml'
                 jacoco execPattern: 'target/jacoco.exec'
         }
+       }
+        }
+      stage('Docker Build and Push') {
+        steps {
+          withDockerRegistry([credentialsId: "docker-hub", url:""]) {
+            sh 'printenv'
+              sh 'docker build -t awsdemo845/numeric-app:""$GIT_COMMIT"".'
+              sh 'docker push awsdemo845/numeric-app:""$GIT_COMMIT""'
+          }   
+        }
       }
-        } 
     }
 }
