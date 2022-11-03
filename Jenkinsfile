@@ -23,8 +23,7 @@ pipeline {
         steps {
           withDockerRegistry([credentialsId: "docker-hub", url:""]) {
               sh 'printenv'
-              sh 'dockerImage = docker.build registry + ":V$BUILD_NUMBER"'
-              // sh 'docker build -t awsdemo845/numeric-app:""$GIT_COMMIT"".'
+              sh 'docker build -t awsdemo845/numeric-app .'
               sh 'docker push awsdemo845/numeric-app:""$GIT_COMMIT""'
           }   
         }
