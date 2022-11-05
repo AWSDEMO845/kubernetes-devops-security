@@ -72,7 +72,7 @@ pipeline {
         steps {
           withDockerRegistry([credentialsId: "docker-hub", url:""]) {
               sh 'printenv'
-              sh 'sudo docker build -t awsdemo845/numeric-app .'
+              sh 'docker build -t awsdemo845/numeric-app .'
               sh 'docker push awsdemo845/numeric-app'
           }   
         }
