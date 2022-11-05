@@ -18,6 +18,8 @@ spec:
       containers:
       - image: awsdemo845/numeric-app:latest 
         name: devsecops-container
+        SecurityContext: 
+          runAsNonRoot: true
 ---
 apiVersion: v1
 kind: Service
