@@ -78,7 +78,7 @@ forbidden_users = [
     "0"
 ]
 
-deny[msg] {
+allow[msg] {
     command := "user"
     users := [name | input[i].Cmd == "user"; name := input[i].Value]
     lastuser := users[count(users)-1]
