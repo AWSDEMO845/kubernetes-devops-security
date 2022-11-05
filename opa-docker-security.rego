@@ -83,8 +83,9 @@ allow[msg] {
     users := [name | input[i].Cmd == "user"; name := input[i].Value]
     lastuser := users[count(users)-1]
     contains(lower(lastuser[_]), forbidden_users[_])
-    msg = sprintf("Line %d: Last USER directive (USER %s) is forbidden", [i, lastuser])
+    #msg = sprintf("Line %d: Last USER directive (USER %s) is forbidden", [i, lastuser])
 }
+
 
 # Do not sudo
 deny[msg] {
