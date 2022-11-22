@@ -15,12 +15,14 @@ spec:
       labels:
         app: devsecops
     spec:
+      serviceAccountName: default 
       containers:
       - image: awsdemo845/numeric-app:latest 
         name: devsecops-container
         securityContext: 
           runAsNonRoot: true
           runAsUser: 100
+          readOnlyRootFileSystem: true
 ---
 apiVersion: v1
 kind: Service
